@@ -27,8 +27,8 @@
 <meta property="og:description" content="通过 Wireguard + CS VPN 实现 team 成员对目标内网的访问">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/SecLabBlog/img/Pasted%20image%2020240823224129.png">
-<meta property="article:published_time" content="2024-08-23T17:38:30.801Z">
-<meta property="article:modified_time" content="2024-08-23T17:38:30.801Z">
+<meta property="article:published_time" content="2024-08-23T17:43:58.613Z">
+<meta property="article:modified_time" content="2024-08-23T17:43:58.613Z">
 <meta property="article:author" content="Estamel GG">
 <meta property="article:tag" content="Cobalt Strike">
 <meta property="article:tag" content="VPN">
@@ -215,7 +215,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-24 01:38" pubdate>
+        <time datetime="2024-08-24 01:43" pubdate>
           2024年8月24日 凌晨
         </time>
       </span>
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          913 字
+          861 字
         
       </span>
     
@@ -284,7 +284,8 @@
 <li>网上没找到太多和 CS VPN 有关的文章</li>
 <li>在目标上部署了 CS VPN 后，只有 CS 主控（teamserver） 可以访问目标内网，异地 team 成员无法访问</li>
 </ul>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>通过在 CS 主控服务器上部署 WireGuard VPN 服务，让 team 成员客户端接入 wg VPN 网络，并配置流量转发，以实现 team 成员访问目标内网的能力。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><img src="/SecLabBlog/images/0.png" srcset="/SecLabBlog/img/loading.gif" lazyload alt="代理拓扑"></p>
+<p>通过在 CS 主控服务器上部署 WireGuard VPN 服务，让 team 成员客户端接入 wg VPN 网络，并配置流量转发，以实现 team 成员访问目标内网的能力。</p>
 <p>如果有更好的解决方案，欢迎提 issue。</p>
 <h1 id="基础设施"><a href="#基础设施" class="headerlink" title="基础设施"></a>基础设施</h1><h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
 <li><code>cs</code> 和 <code>wg</code> 服务端装在一起，且位于云服务</li>
@@ -295,19 +296,17 @@
 </ul>
 <p><img src="/SecLabBlog/images/1.png" srcset="/SecLabBlog/img/loading.gif" lazyload alt="靶机情况"></p>
 <p><img src="/SecLabBlog/images/2.png" srcset="/SecLabBlog/img/loading.gif" lazyload alt="靶机内网"></p>
-<p>我们希望实现的是：攻击机能够直接访问目标靶机内网，并且如果有其它 <code>team</code> 成员，他们也可以访问靶机内网。</p>
-<p><img src="/SecLabBlog/images/0.png" srcset="/SecLabBlog/img/loading.gif" lazyload alt="代理拓扑"></p>
-<p>根据参考资料以及拓扑图，我们已经搭建了两个 VPN 网络：</p>
+<p>根据参考资料以及拓扑图，我们需要搭建两个 VPN 网络：</p>
 <ul>
 <li><code>cs 主控</code> 为核心的：<code>靶机 Beacon -&gt; cs 主控</code> VPN 网络，靶机为客户端。</li>
 <li><code>wg 服务</code> 为核心的：<code>team 成员 -&gt; WG</code> VPN 网络，<code>team成员</code> 为客户端。</li>
 <li><code>cs主控</code> 和 <code>wg 服务</code> 位于同一公网云主机。</li>
 </ul>
-<p>最终，如果 <code>team 成员</code> 希望访问访问目标靶机内网，只要将 <code>team 成员</code> 的 WireGuard VPN 配置文件中，<code>AllowIPs</code> 中添加靶机网段即可。</p>
-<h2 id="Cobalt-Strike-VPN-部署"><a href="#Cobalt-Strike-VPN-部署" class="headerlink" title="Cobalt Strike VPN 部署"></a>Cobalt Strike VPN 部署</h2><p>通过 CS 部署 VPN 后，还需要在 <code>teamserver</code> 上启用虚拟网卡并设置 IP</p>
+<h2 id="Cobalt-Strike-VPN-部署"><a href="#Cobalt-Strike-VPN-部署" class="headerlink" title="Cobalt Strike VPN 部署"></a>Cobalt Strike VPN 部署</h2><p>在 CS 客户端界面即可操作。</p>
+<p>通过 CS 在目标主机部署 VPN 客户端后，还需要在 CS 主控（teamserver）上启用虚拟网卡并配置 IP 地址和网关信息。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启用虚拟网卡，记住刚才创建的网卡名称，不确定就用 ip a 命令查看</span><br><span class="hljs-built_in">sudo</span> ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> phear1 up<br><span class="hljs-comment"># 设置 IP 和掩码</span><br><span class="hljs-built_in">sudo</span> ip addr add 192.168.163.211/24 dev phear1<br></code></pre></td></tr></table></figure>
 
-<p>正确配置后，<code>teamserver</code> 应该能访问目标内网。</p>
+<p>正确配置后，CS 主控（teamserver）应该能访问目标内网。</p>
 <p>CS VPN 接口:</p>
 <p><img src="/SecLabBlog/images/3.png" srcset="/SecLabBlog/img/loading.gif" lazyload></p>
 <p>cs 主控服务器虚拟网卡:</p>
