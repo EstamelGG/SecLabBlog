@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://estamelgg.github.io/SecLabBlog/img/Pasted%20image%2020240823224129.png">
 <meta property="article:published_time" content="2024-08-24T02:00:00.000Z">
-<meta property="article:modified_time" content="2024-08-24T05:39:40.376Z">
+<meta property="article:modified_time" content="2024-08-25T04:27:01.969Z">
 <meta property="article:author" content="Estamel GG">
 <meta property="article:tag" content="Cobalt Strike">
 <meta property="article:tag" content="CS">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          866 字
+          976 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -287,8 +287,17 @@
 <li>网上没找到太多和 CS VPN 有关的文章。</li>
 <li>在目标上部署了 CS VPN 后，只有 CS 主控（teamserver） 可以访问目标内网，异地 team 成员无法访问。</li>
 </ol>
+<h1 id="关于-CS-VPN"><a href="#关于-CS-VPN" class="headerlink" title="关于 CS VPN"></a>关于 CS VPN</h1><ol>
+<li><p>CS 这个 VPN 功能很垃圾，除非必要不然别用。</p>
+</li>
+<li><p>VPN 部署在 UDP 等协议下，目标需要能够直接回连主控 IP，会导致暴露主控。</p>
+</li>
+<li><p>不想暴露主控的 IP 就设置 VPN 接口协议为 TCP(Bind) ，此时会从 Beacon 转发，但是会将 Sleep Time 设为 0，否则连接质量会很差。</p>
+</li>
+</ol>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p><img src="/SecLabBlog/images/0.png" srcset="/SecLabBlog/img/loading.gif" lazyload alt="代理拓扑"></p>
 <p>通过在 CS 主控服务器上部署 WireGuard VPN 服务，让 team 成员客户端接入 WG VPN 网络，并配置流量转发，以实现 team 成员访问目标内网的能力。</p>
+<p>对于 VPN 本身的安全性和稳定性问题暂时不讨论（我也没辙）。</p>
 <p>如果有更好的解决方案，欢迎提 issue。</p>
 <h1 id="基础设施"><a href="#基础设施" class="headerlink" title="基础设施"></a>基础设施</h1><h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
 <li><code>CS</code> 和 <code>WG</code> 服务端装在同一云服务器上</li>
