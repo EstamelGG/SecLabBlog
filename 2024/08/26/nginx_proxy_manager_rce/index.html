@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://estamelgg.github.io/SecLabBlog/images/npm_rce/image.png">
 <meta property="article:published_time" content="2024-08-26T02:00:00.000Z">
-<meta property="article:modified_time" content="2024-08-27T15:18:23.796Z">
+<meta property="article:modified_time" content="2024-08-27T15:23:10.357Z">
 <meta property="article:author" content="Estamel GG">
 <meta property="article:tag" content="RCE">
 <meta name="twitter:card" content="summary_large_image">
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          992 字
+          993 字
         
       </span>
     
@@ -280,7 +280,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>该漏洞<strong>并非</strong> NPM 项目的代码漏洞，而是 NPM Docker 环境的默认配置存在缺陷，在 NPM 用户权限控制不当的情况下可以用于获取<strong>容器内</strong>的 Shell 。</p>
+                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>该漏洞<strong>并非</strong>是 NPM 项目的代码存在漏洞，而是 NPM Docker 环境的默认配置存在缺陷，在 NPM 用户拥有 <code>Hosts</code> 的 <code>Manage</code> 权限的情况下，可以获取<strong>容器内</strong>的 Shell 。</p>
 <h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><p>Nginx Proxy Manager (NPM) 基于 Ubuntu + Nginx 容器化部署。</p>
 <p>创建一个空目录，创建 <code>docker-compose.yml</code> 文件，内容：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">app:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">&#x27;jc21/nginx-proxy-manager:2.11.3&#x27;</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;80:80&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;81:81&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;443:443&#x27;</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./data:/data</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./letsencrypt:/etc/letsencrypt</span><br></code></pre></td></tr></table></figure>
