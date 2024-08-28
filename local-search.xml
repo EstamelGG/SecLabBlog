@@ -13,7 +13,7 @@
     
     <categories>
       
-      <category>渗透</category>
+      <category>漏洞</category>
       
     </categories>
     
@@ -21,6 +21,12 @@
     <tags>
       
       <tag>RCE</tag>
+      
+      <tag>漏洞</tag>
+      
+      <tag>Docker</tag>
+      
+      <tag>Nginx</tag>
       
     </tags>
     
@@ -38,7 +44,7 @@
     
     <categories>
       
-      <category>渗透</category>
+      <category>C2</category>
       
     </categories>
     
