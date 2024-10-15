@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://estamelgg.github.io/SecLabBlog/images/headscale_deploy/headscale.png">
 <meta property="article:published_time" content="2024-10-14T02:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-15T05:45:04.278Z">
+<meta property="article:modified_time" content="2024-10-15T06:05:11.424Z">
 <meta property="article:author" content="Estamel GG">
 <meta property="article:tag" content="VPN">
 <meta property="article:tag" content="Headscale">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.6k 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          13 分钟
+          14 分钟
         
       </span>
     
@@ -351,6 +351,13 @@
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Restart-Service</span> <span class="hljs-literal">-Name</span> <span class="hljs-string">&quot;tailscale&quot;</span><br>tailscale up<br></code></pre></td></tr></table></figure>
 
 <p>执行后，重新打开 tailscale 客户端即可。</p>
+<p>也可以创建一个快捷方式，将其 “目标” 字段修改为：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">C:\Windows\System32\WindowsPowerShell\v1.<span class="hljs-number">0</span>\powershell.exe <span class="hljs-literal">-WindowStyle</span> <span class="hljs-keyword">hidden</span> <span class="hljs-literal">-NoProfile</span> <span class="hljs-literal">-ExecutionPolicy</span> Bypass <span class="hljs-literal">-c</span> <span class="hljs-string">&quot;Restart-Service -Name &quot;</span>Tailscale<span class="hljs-string">&quot; -Force;Start-Process \&quot;</span>C:\Program Files\Tailscale\tailscale<span class="hljs-literal">-ipn</span>.exe\<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/SecLabBlog/images/headscale_deploy/image-16.png" srcset="/SecLabBlog/img/loading.gif" lazyload></p>
+<p>同时设置快捷方式以<strong>管理员身份</strong>运行。</p>
+<p><img src="/SecLabBlog/images/headscale_deploy/image-17.png" srcset="/SecLabBlog/img/loading.gif" lazyload></p>
+<p>最后修改一下快捷方式的图标，就可以正常用了。</p>
 <h2 id="Linux-客户端"><a href="#Linux-客户端" class="headerlink" title="Linux 客户端"></a>Linux 客户端</h2><p>以 Ubuntu 为例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加 tailscale 仓库</span><br><span class="hljs-built_in">mkdir</span> -p --mode=0755 /usr/share/keyrings<br>curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg | <span class="hljs-built_in">tee</span> /usr/share/keyrings/tailscale-archive-keyring.gpg &gt;/dev/null<br>curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list | <span class="hljs-built_in">tee</span> /etc/apt/sources.list.d/tailscale.list<br><span class="hljs-comment"># 安装 tailscale</span><br>apt-get update &amp;&amp; apt-get install tailscale<br></code></pre></td></tr></table></figure>
 
