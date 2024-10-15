@@ -21,14 +21,14 @@
   
     <meta name="description" content="通过 Headscale + Tailscale 实现打洞组网">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Headscale 0.23.0 纯 IP -部署">
+<meta property="og:title" content="Headscale 0.23.0 部署">
 <meta property="og:url" content="https://estamelgg.github.io/SecLabBlog/2024/10/14/headscale_deploy/index.html">
 <meta property="og:site_name" content="GG 的博客">
 <meta property="og:description" content="通过 Headscale + Tailscale 实现打洞组网">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://estamelgg.github.io/SecLabBlog/images/headscale_deploy/headscale.png">
 <meta property="article:published_time" content="2024-10-14T02:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-15T02:51:38.906Z">
+<meta property="article:modified_time" content="2024-10-15T03:08:51.270Z">
 <meta property="article:author" content="Estamel GG">
 <meta property="article:tag" content="VPN">
 <meta property="article:tag" content="Headscale">
@@ -40,7 +40,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Headscale 0.23.0 纯 IP -部署 - GG 的博客</title>
+  <title>Headscale 0.23.0 部署 - GG 的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Headscale 0.23.0 纯 IP -部署"></span>
+            <span id="subtitle" data-typed-text="Headscale 0.23.0 部署"></span>
           
         </div>
 
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.4k 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          11 分钟
+          12 分钟
         
       </span>
     
@@ -277,7 +277,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Headscale 0.23.0 纯 IP -部署</h1>
+            <h1 id="seo-header">Headscale 0.23.0 部署</h1>
             
             
               <div class="markdown-body">
@@ -373,6 +373,22 @@
 
 <h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">headscale node list <span class="hljs-comment"># 列出所有的节点</span><br>headscale node <span class="hljs-built_in">ls</span> -t <span class="hljs-comment"># 列出所有的节点,同时显示出tag信息</span><br>headscale -n default node <span class="hljs-built_in">ls</span> <span class="hljs-comment"># 只查看namespace为default下的节点</span><br>headscale node delete -i &lt;ID&gt; <span class="hljs-comment"># 根据id删除指定的节点，这里面的id是node list查询出来的id</span><br>headscale node tag -i=2 -t=tag:<span class="hljs-built_in">test</span> <span class="hljs-comment"># 给id为2的node设置tag为tag:test</span><br>headscale node rename -i &lt;ID&gt; New_Name <span class="hljs-comment"># 将指定node重命名</span><br></code></pre></td></tr></table></figure>
 
+<h2 id="查看节点状态"><a href="#查看节点状态" class="headerlink" title="查看节点状态"></a>查看节点状态</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">headscale node list | sed -r <span class="hljs-string">&quot;s/\x1B\[([0-9]&#123;1,2&#125;(;[0-9]&#123;1,2&#125;)?)?[m|K]//g&quot;</span>\<br>| sed <span class="hljs-string">&quot;s/Namespace/Space/g&quot;</span> | sed <span class="hljs-string">&quot;s/online/[+]ON/g&quot;</span> \<br>| sed <span class="hljs-string">&quot;s/offline/     OFF/g&quot;</span> | grep <span class="hljs-string">&quot;|&quot;</span> \<br>| awk -F <span class="hljs-string">&quot;|&quot;</span> <span class="hljs-string">&#x27;&#123;print $1&quot;	|&quot;$11&quot;	|&quot;$7&quot;	|&quot;$3&#125;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="查看节点间连接状态"><a href="#查看节点间连接状态" class="headerlink" title="查看节点间连接状态"></a>查看节点间连接状态</h2><p>Windows&#x2F;Linux 环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tailscale status<br></code></pre></td></tr></table></figure>
+
+<p>MacOS 环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/Applications/Tailscale.app/Contents/MacOS/Tailscale status 2&gt;/dev/null<br></code></pre></td></tr></table></figure>
+
+<h2 id="查看节点间延迟"><a href="#查看节点间延迟" class="headerlink" title="查看节点间延迟"></a>查看节点间延迟</h2><p>Windows&#x2F;Linux 环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tailscale ping 100.64.0.4<br></code></pre></td></tr></table></figure>
+
+<p>MacOS 环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/Applications/Tailscale.app/Contents/MacOS/Tailscale ping 100.64.0.4<br></code></pre></td></tr></table></figure>
+
+<p>如下图可见，一开始两个节点之间通过东京的 <code>DERP</code> 服务进行中转，随后成功打洞，实现了低延迟直连。</p>
+<p><img src="/SecLabBlog/images/headscale_deploy/image-15.png" srcset="/SecLabBlog/img/loading.gif" lazyload alt="img.png"></p>
 <h2 id="卸载-Headscale"><a href="#卸载-Headscale" class="headerlink" title="卸载 Headscale"></a>卸载 Headscale</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dpkg -P headscale<br></code></pre></td></tr></table></figure>
 
 <p>如果提示有文件未删除，则手动删除即可。</p>
@@ -425,7 +441,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Headscale 0.23.0 纯 IP -部署</div>
+      <div>Headscale 0.23.0 部署</div>
       <div>https://estamelgg.github.io/SecLabBlog/2024/10/14/headscale_deploy/</div>
     </div>
     <div class="license-meta">
