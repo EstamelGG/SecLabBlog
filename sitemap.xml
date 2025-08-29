@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://estamelgg.github.io/SecLabBlog/2024/08/24/cobaltstrike_vpn/</loc>
-    
-    <lastmod>2025-08-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://estamelgg.github.io/SecLabBlog/2024/10/14/headscale_deploy/</loc>
     
     <lastmod>2025-08-29</lastmod>
@@ -39,6 +30,15 @@
   
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/about/index.html</loc>
+    
+    <lastmod>2025-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/2024/08/24/cobaltstrike_vpn/</loc>
     
     <lastmod>2025-08-29</lastmod>
     
