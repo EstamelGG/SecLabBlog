@@ -2,18 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://estamelgg.github.io/SecLabBlog/2024/08/24/cobaltstrike_vpn/</loc>
-    
-    <lastmod>2024-10-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://estamelgg.github.io/SecLabBlog/2024/10/14/headscale_deploy/</loc>
     
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +13,25 @@
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/2024/08/26/nginx_proxy_manager_rce/</loc>
     
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/2025/08/29/synology_info_leak/</loc>
+    
+    <lastmod>2025-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/2024/08/24/cobaltstrike_vpn/</loc>
+    
+    <lastmod>2025-08-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -31,7 +40,7 @@
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/about/index.html</loc>
     
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,78 +49,99 @@
 
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://estamelgg.github.io/SecLabBlog/tags/Cobalt-Strike/</loc>
-    <lastmod>2024-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://estamelgg.github.io/SecLabBlog/tags/CS/</loc>
-    <lastmod>2024-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://estamelgg.github.io/SecLabBlog/tags/VPN/</loc>
-    <lastmod>2024-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://estamelgg.github.io/SecLabBlog/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
-    <lastmod>2024-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://estamelgg.github.io/SecLabBlog/tags/Headscale/</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/tags/Tailscale/</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/tags/VPN/</loc>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/tags/RCE/</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/tags/%E6%BC%8F%E6%B4%9E/</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/tags/Docker/</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/tags/Nginx/</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/tags/Synology/</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/tags/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/tags/%E7%BE%A4%E6%99%96/</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/tags/Cobalt-Strike/</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/tags/CS/</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -119,22 +149,22 @@
 
   
   <url>
-    <loc>https://estamelgg.github.io/SecLabBlog/categories/C2/</loc>
-    <lastmod>2024-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://estamelgg.github.io/SecLabBlog/categories/VPN/</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://estamelgg.github.io/SecLabBlog/categories/%E6%BC%8F%E6%B4%9E/</loc>
-    <lastmod>2024-10-15</lastmod>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://estamelgg.github.io/SecLabBlog/categories/C2/</loc>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
